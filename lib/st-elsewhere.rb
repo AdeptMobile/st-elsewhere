@@ -48,7 +48,7 @@ module StElsewhere
       if self.new_record?
         association_collection = new_associations
       else #we can save this
-        unless association_collection.empty?
+        unless association_collection.nil? || association_collection.empty?
           #this will happen on_create as there will still be associations in memory but not in the DB
           #in this case, ignore new_associations and use 
           desired_association_ids = self.class.associations_to_association_ids( association_collection )
